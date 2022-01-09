@@ -1,0 +1,36 @@
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  width: 274px;
+  box-sizing: border-box;
+  padding-left: 62px;
+}
+
+.navigation__link {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.38;
+  text-decoration: none;
+  color: black;
+  transition: 0.2s ease-in;
+}
+
+.navigation__link_active {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.38;
+  text-decoration: none;
+  color: black;
+  pointer-events: none;
+  cursor: default;
+}
+
+.navigation__link:hover {
+  font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+  .navigation {
+    display: none;
+  }
+}
