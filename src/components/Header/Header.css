@@ -17,6 +17,12 @@
   min-height: 74px;
 }
 
+.header__links {
+  max-width: 294px;
+  display: flex;
+  align-items: center;
+}
+
 .header__menu-button {
   display: none;
   height: 44px;

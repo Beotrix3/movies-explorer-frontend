@@ -13,8 +13,8 @@ function Login() {
         <label className="login__label" htmlFor="login-password">Пароль</label>
         <input className="login__input" minLength="8" id="login-password" name="login-password" type="password" required />
         <span className="login__error-text">Что-то пошло не так...</span>
-        <button className="login__button" type="submit">Зарегистрироваться</button>
-        <span className="login__text">Ещё не зарегистрированы?
+        <button className="login__button" type="submit">Войти</button>
+        <span className="login__text">Еще не зарегистрированы?
           <Link to="/signup" className="login__link">Регистрация</Link>
         </span>
       </form>

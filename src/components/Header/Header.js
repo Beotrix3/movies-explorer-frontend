@@ -11,12 +11,20 @@ function Header({ handleMenu }) {
   return (
     <header className="header">
       <div className="header__container">
-        <Logo />
+        <div className="header__links">
+          <Logo />
+          {matchMain.isExact ? (
+            <></>
+          ) : (
+            <>
+              <Navigation />
+            </>
+          )}
+        </div>
         {matchMain.isExact ? (
           <NavBar />
         ) : (
           <>
-            <Navigation />
             <div className="header__link-wrapper">
               <Account />
             </div>

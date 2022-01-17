@@ -8,6 +8,9 @@ function MoviesCardList() {
         <MovieCard />
         <MovieCard />
         <MovieCard />
+        <MovieCard />
+        <MovieCard />
+        <MovieCard />
       </ul>
     </section>
   );
