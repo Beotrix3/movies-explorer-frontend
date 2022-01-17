@@ -1,0 +1,7 @@
+.App {
+  width: 100%;
+  min-width: 320px;
+  box-sizing: border-box;
+  color: black;
+  font-family: 'Inter', Arial, sans-serif;
+}
