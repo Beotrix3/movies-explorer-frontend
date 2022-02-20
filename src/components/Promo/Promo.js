@@ -1,5 +1,6 @@
-import "./Promo.css";
+import React from 'react';
 import { NavTab } from '../NavTab/NavTab';
+import './Promo.css';
 
 function Promo() {
   return (

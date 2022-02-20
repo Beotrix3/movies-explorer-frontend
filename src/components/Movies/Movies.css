@@ -6,6 +6,10 @@
   padding: 74px 70px 80px;
 }
 
+.movies__error {
+  margin-top: 10px;
+}
+
 .movies__button {
   box-sizing: border-box;
   width: 100%;

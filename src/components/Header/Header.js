@@ -1,12 +1,12 @@
-import "./Header.css";
-import Logo from "../Logo/Logo";
-import NavBar from "../NavBar/NavBar";
-import Navigation from "../Navigation/Navigation";
-import Account from "../Account/Account";
-import { useRouteMatch } from "react-router-dom";
+import './Header.css';
+import { useRouteMatch } from 'react-router-dom';
+import Logo from '../Logo/Logo';
+import NavBar from '../NavBar/NavBar';
+import Navigation from '../Navigation/Navigation';
+import Account from '../Account/Account';
 
-function Header({ handleMenu }) {
-  const matchMain = useRouteMatch("/");
+function Header() {
+  const matchMain = useRouteMatch('/');
 
   return (
     <header className="header">
@@ -16,9 +16,7 @@ function Header({ handleMenu }) {
           {matchMain.isExact ? (
             <></>
           ) : (
-            <>
-              <Navigation />
-            </>
+            <Navigation />
           )}
         </div>
         {matchMain.isExact ? (
@@ -28,7 +26,7 @@ function Header({ handleMenu }) {
             <div className="header__link-wrapper">
               <Account />
             </div>
-            <button className="header__menu-button" onClick={ handleMenu }></button>
+            <button type="button" className="header__menu-button" />
           </>
         )}
       </div>
