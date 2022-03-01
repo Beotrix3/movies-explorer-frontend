@@ -1,71 +1,70 @@
-.filter-checkbox__toggle-container {
-  padding-top: 32px;
-  width: 196px;
+.filter-checkbox {
   display: flex;
-  align-items: center;
-  box-sizing: border-box;
-  font-size: 13px;
-  line-height: 18px;
+  justify-content: left;
+  margin-bottom: 48px;
+  margin-left:74px;
 }
 
-.filter-checkbox__toggle {
-  position: relative;
+.filter-checkbox__button {
+  width: 36px;
   height: 20px;
-  width: 39px;
-  border-radius: 20px;
-  -webkit-appearance: none;
-  outline: none;
-  background-color: #e8e8e8;
-  transition: 0.2s ease-in;
   cursor: pointer;
-  margin-right: 14px;
+  transition: 1s;
+  margin: 0;
+  border: none;
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin-right: 12px;
+  background: #ffffff;
 }
 
-.filter-checkbox__toggle:checked {
-  background-color: #2be080;
+.filter-checkbox__button:hover {
+  opacity: 0.7;
 }
 
-.filter-checkbox__toggle::before {
-  content: "";
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  left: 2px;
-  top: 2px;
-  transition: 0.2s ease-in;
-  background-color: white;
+.filter-checkbox__button_active {
+  background-image: url("../../images/filter-active.svg");
 }
 
-.filter-checkbox__toggle:checked::before {
-  left: 22px;
+.filter-checkbox__button_inactive {
+  background-image: url("../../images/filter-inactive.svg");
 }
 
-.filter-checkbox__toggle-text {
-  margin:0;
-  font-size: 13px;
+.filter-checkbox__text {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
   line-height: 18px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #000000;
+  margin: 0;
 }
 
 @media screen and (max-width: 768px) {
-  .filter-checkbox__toggle-container {
-    margin-left: auto;
+  .filter-checkbox {
+    margin-bottom: 61px;
+    justify-content: right;
     flex-direction: row-reverse;
+    margin-right: 30px;
   }
 
-  .filter-checkbox__toggle {
-    margin-left: 14px;
-    margin-right: 0px;
+  .filter-checkbox__button {
+    margin-left: 13px;
   }
 }
 
-@media screen and (max-width: 600px) {
-  .filter-checkbox__toggle-container {
-    border: none;
+@media screen and (max-width: 320px) {
+  .filter-checkbox {
+    margin-bottom: 50px;
+    flex-direction: row-reverse;
     justify-content: center;
-    padding: 0%;
-    width: 100%;
-    font-size: 11;
-    line-height: 1.63;
+  }
+  .filter-checkbox__button {
+    margin-right: 13px;
+  }
+  .filter-checkbox__text {
+    font-size: 11px;
   }
 }

@@ -1,19 +1,16 @@
-import React from 'react';
+import React from "react";
 import { Route, Redirect, Switch, useHistory, useLocation } from "react-router-dom";
-import Main from '../Main/Main';
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
-import Movies from '../Movies/Movies';
-import SavedMovies from '../SavedMovies/SavedMovies';
-import NotFound from '../NotFound/NotFound';
-import Register from '../Register/Register';
-import Login from '../Login/Login';
-import Profile from '../Profile/Profile';
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import Main from "../Main/Main";
+import Movies from "../Movies/Movies";
+import SavedMovies from "../SavedMovies/SavedMovies";
+import Profile from "../Profile/Profile";
+import Login from "../Login/Login";
+import Register from "../Register/Register";
+import NotFound from "../NotFound/NotFound";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import * as MoviesApi from "../../utils/MoviesApi";
 import * as MainApi from "../../utils/MainApi";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import './App.css';
 
 function App() {
   const [isLogged, setIsLogged] = React.useState(false);
@@ -63,8 +60,8 @@ function App() {
         .catch((err) => {
           setServerError(true);
         })
-      }
     }
+  }
 
   React.useEffect(() => {
     tokenCheck();
@@ -321,10 +318,6 @@ function App() {
     <div className="App">
       <CurrentUserContext.Provider value={currentUser}>
 
-        <Route exact path={['/', '/movies', '/saved-movies', '/profile']}>
-          <Header />
-        </Route>
-
         <Switch>
 
           <Route exact path="/" isLogged={isLogged}>
@@ -390,10 +383,6 @@ function App() {
           </Route>
 
         </Switch>
-
-        <Route exact path={['/', '/movies', '/saved-movies']}>
-          <Footer />
-        </Route>
 
       </CurrentUserContext.Provider>
     </div>

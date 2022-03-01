@@ -7,11 +7,12 @@ function FilterCheckbox({ isFilterMovies, changeFilter }) {
   }
 
   return (
-    <div className="filter-checkbox__toggle-container">
-      <button type="button" className={isFilterMovies ? "filter-checkbox__toggle": ''} onClick={handleChangeFilter}></button>
+    <section className="filter-checkbox">
+      <button onClick={handleChangeFilter} type="button" className={isFilterMovies ? "filter-checkbox__button filter-checkbox__button_active" : "filter-checkbox__button filter-checkbox__button_inactive"}></button>
       <p className="filter-checkbox__text">Короткометражки</p>
-    </div>
+    </section>
   )
+
 };
 
 export default FilterCheckbox;

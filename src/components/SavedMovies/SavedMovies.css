@@ -1,18 +1,12 @@
 .saved-movies {
-  max-width: 1280px;
-  margin: 0 auto;
-  box-sizing: border-box;
-  padding: 74px 70px 80px;
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  min-height: 100vh;
 }
-
-@media screen and (max-width: 768px) {
-  .saved-movies {
-    padding: 74px 30px 90px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .saved-movies {
-    padding: 74px 10px 80px;
-  }
+.saved-movies__content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }

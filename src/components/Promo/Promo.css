@@ -1,46 +1,38 @@
-.promo {
-  background-color: #465DFF;
-}
-
-.promo__inner {
-  min-height: 598px;
-  background-image: url(../../images/landing-logo.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 320px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.promo__title {
-  margin: 0;
-  max-width: 730px;
+.promo-page {
   width: 100%;
-  text-align: center;
-  font-family: 'Inter', Arial, Helvetica, sans-serif;
-  font-weight: 400;
+  min-height: 598px;
+  background: #465DFF;
+  background-size: 320px 320px;
+  background-image: url("../../images/landing-logo.svg");
+  background-position-x: center;
+  background-position-y: 56.08%;
+  background-repeat: no-repeat;
+}
+.promo-page__title {
+  margin: 184px auto 224px auto;
+  padding: 0;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
   line-height: 58px;
   letter-spacing: -0.04em;
-  color: #fff;
+  text-align: center;
+  max-width: 730px;
+  color: #ffffff;
 }
-
 @media screen and (max-width: 768px) {
-  .promo__inner {
-    min-height: 858px;
+  .promo-page__title {
+    margin-top: 326px;
+    padding-bottom: 342px;
+    margin-bottom: 0;
   }
 }
-
-@media screen and (max-width: 600px) {
-  .promo__inner {
-    min-height: 644px;
-    background-size: 248px;
-  }
-
-  .promo__title {
+@media screen and (max-width: 480px) {
+  .promo-page__title {
     font-size: 31px;
     line-height: 39px;
+    margin-top: 207px;
+    padding-bottom: 246px;
   }
 }
-

@@ -1,37 +1,15 @@
-import './Header.css';
-import { useRouteMatch } from 'react-router-dom';
-import Logo from '../Logo/Logo';
-import NavBar from '../NavBar/NavBar';
-import Navigation from '../Navigation/Navigation';
-import Account from '../Account/Account';
+import React from "react";
+import { Link } from "react-router-dom";
+import Navigation from "../Navigation/Navigation";
+import "./Header.css";
 
-function Header() {
-  const matchMain = useRouteMatch('/');
-
+function Header({ isLogged, isMain, isProfile, isMovies, isSavedMovies }) {
   return (
     <header className="header">
-      <div className="header__container">
-        <div className="header__links">
-          <Logo />
-          {matchMain.isExact ? (
-            <></>
-          ) : (
-            <Navigation />
-          )}
-        </div>
-        {matchMain.isExact ? (
-          <NavBar />
-        ) : (
-          <>
-            <div className="header__link-wrapper">
-              <Account />
-            </div>
-            <button type="button" className="header__menu-button" />
-          </>
-        )}
-      </div>
+      <Link className="header__logo" to="/"></Link>
+      <Navigation isLogged={isLogged} isMain={isMain} isProfile={isProfile} isMovies={isMovies} isSavedMovies={isSavedMovies} />
     </header>
-  );
-}
+  )
+};
 
 export default Header;

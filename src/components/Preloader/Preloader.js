@@ -1,5 +1,5 @@
-import React from 'react';
-import './Preloader.css';
+import React from 'react'
+import './Preloader.css'
 
 const Preloader = ({ isLoadingMovies }) => {
   return (
@@ -11,4 +11,4 @@ const Preloader = ({ isLoadingMovies }) => {
   )
 };
 
-export default Preloader;
+export default Preloader

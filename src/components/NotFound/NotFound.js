@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import './NotFound.css';
+import React from "react";
+import { Link, useHistory } from "react-router-dom";
+import "./NotFound.css";
 
 function NotFound() {
   const history = useHistory();
@@ -8,16 +8,14 @@ function NotFound() {
   function handleClickLink() {
     history.goBack();
   }
-
+    
   return (
-    <section className="notfound">
-      <div>
-        <h1 className="notfound__title">404</h1>
-        <p className="notfound__subtitle">Страница не найдена</p>
-      </div>
-      <Link className="notfound__link" type="button" to="/" onClick={handleClickLink}>Назад</Link>
+    <section className="not-found">
+      <h1 className="not-found__title">404</h1>
+      <p className="not-found__text">Страница не найдена</p>
+      <Link to="" onClick={handleClickLink} className="not-found__link">Назад</Link>
     </section>
-  );
-}
+  )
+};
 
 export default NotFound;
