@@ -10,7 +10,7 @@ function Profile({ isLogged, onSignOut, changeProfile, profileError, setProfileE
 
     function editUserProfile(e) {
       e.preventDefault();
-      changeProfile({ email: values.email, name: values.name });
+      changeProfile({ email: values.email, name: values.name }, console.log(values.name));
       resetForm();
     }
 
@@ -34,11 +34,13 @@ function Profile({ isLogged, onSignOut, changeProfile, profileError, setProfileE
       <section className="profile">
         <Header isLogged={isLogged} isMain={false} isProfile={true} isMovies={false} isSavedMovies={false} />
         <h1 className="profile__title">Привет, {currentUser.name}</h1>
+        {console.log(currentUser.name)}
         <form className="profile__form" onSubmit={editUserProfile}>
           <div className="profile__fields">
             <div className="profile__field">
               <p className="profile__text">Имя</p>
               <input className="profile__input" name="name" value={values.name || ""} pattern="[а-яА-Яa-zA-ZёË\- ]{1,}" type="text" onChange={handleChangeInput} minLength="2" required />
+              {console.log(values.name)}
             </div>
             <span className="profile__error">{errors.name}</span>
             <div className="profile__field">

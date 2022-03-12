@@ -70,7 +70,7 @@ function App() {
   function onRegister({ email, password, name }) {
     MoviesApi.register({ email, password, name })
       .then((data) => {
-        if (data._id) {
+        if (data) {
           onLogin({ email, password })
         }
       }).catch((err) => {
