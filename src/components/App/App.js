@@ -49,7 +49,7 @@ function App() {
       if (savedMovies) {
         const resultSave = JSON.parse(savedMovies);
         setSavedMoviesCollection(resultSave);
-        setFilterSavedMoviesCollection(resultSave);
+        setFilterSavedMoviesCollection(resultSave.movies);
       }
       MoviesApi.getContent(jwt)
         .then((user) => {

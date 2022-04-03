@@ -6,7 +6,7 @@ function MoviesCard({ movies, isSaved, savedMovies, movieDeleteFromSavedMovies, 
 
   const [isLike, setIsLike] = React.useState(false);
   const currentUser = React.useContext(CurrentUserContext);
-  const nowMovieSaved = savedMovies.find((item) => item.nameRU === movies.nameRU && item.owner === currentUser._id);
+  const nowMovieSaved = savedMovies.movies.find((item) => item.nameRU === movies.nameRU && item.owner === currentUser._id);
   const movie = {
     country: movies.country || 'нет',
     director: movies.director || 'Нет',
@@ -23,7 +23,7 @@ function MoviesCard({ movies, isSaved, savedMovies, movieDeleteFromSavedMovies, 
 
   function handleLikeCard(e) {
     if (isLike) {
-      const searchMovie = savedMovies.find((item) => item.movieId === String(movies.id));
+      const searchMovie = savedMovies.movies.find((item) => item.movieId === String(movies.id));
       movieDeleteFromSavedMovies(searchMovie._id);
     }
     else {

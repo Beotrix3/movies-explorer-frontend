@@ -5,7 +5,7 @@ import Header from "../Header/Header";
 import "./Profile.css";
 
 function Profile({ isLogged, onSignOut, changeProfile, profileError, setProfileError }) {
-  const currentUser = React.useContext(CurrentUserContext);
+  const { currentUser } = React.useContext(CurrentUserContext);
   const { values, handleChange, errors, isValid, resetForm, setValues } = useFormWithValidation();
 
     function editUserProfile(e) {
@@ -34,13 +34,11 @@ function Profile({ isLogged, onSignOut, changeProfile, profileError, setProfileE
       <section className="profile">
         <Header isLogged={isLogged} isMain={false} isProfile={true} isMovies={false} isSavedMovies={false} />
         <h1 className="profile__title">Привет, {currentUser.name}</h1>
-        {console.log(currentUser.name)}
         <form className="profile__form" onSubmit={editUserProfile}>
           <div className="profile__fields">
             <div className="profile__field">
               <p className="profile__text">Имя</p>
               <input className="profile__input" name="name" value={values.name || ""} pattern="[а-яА-Яa-zA-ZёË\- ]{1,}" type="text" onChange={handleChangeInput} minLength="2" required />
-              {console.log(values.name)}
             </div>
             <span className="profile__error">{errors.name}</span>
             <div className="profile__field">
