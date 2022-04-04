@@ -78,7 +78,7 @@ export const saveMovie = ({ token, movie }) => {
       image: movie.image,
       trailer: movie.trailer,
       thumbnail: movie.thumbnail,
-      movieId: String(movie.movieId),
+      movieId: movie.movieId,
       nameRU: movie.nameRU,
       nameEN: movie.nameEN,
     })

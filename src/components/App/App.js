@@ -49,7 +49,7 @@ function App() {
       if (savedMovies) {
         const resultSave = JSON.parse(savedMovies);
         setSavedMoviesCollection(resultSave);
-        setFilterSavedMoviesCollection(resultSave.movies);
+        setFilterSavedMoviesCollection(resultSave);
       }
       MoviesApi.getContent(jwt)
         .then((user) => {
@@ -264,10 +264,12 @@ function App() {
         setFilterSavedMoviesCollection(filterMoviesById(filterSavedMoviesCollection, id));
         setFilterTimeSavedMoviesCollection(filterMoviesById(filterTimeMoviesCollection, id));
       })
-      .catch((err) => setServerError(true));
-        setTimeout(() => {
-          setIsLoadingMovies(false);
-        }, 1000);
+        .catch((err) => {setServerError(true)})
+        .finally(() => {
+          setTimeout(() => {
+            setIsLoadingMovies(false);
+          }, 1000)
+        })
   }
 
   function movieSaveInStore(movie) {
@@ -284,10 +286,12 @@ function App() {
         else {
           setFilterSavedMoviesCollection(prev => [...prev, res]);
         }
-      }).catch((err) => setServerError(true));
-        setTimeout(() => {
+      }).catch((err) => {setServerError(true)})
+        .finally(() => {
+          setTimeout(() => {
             setIsLoadingMovies(false);
-        }, 1000);
+          }, 1000)
+        })
   }
 
   function filterMoviesById(collection, id) {
