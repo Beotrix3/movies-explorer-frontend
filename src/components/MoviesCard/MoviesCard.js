@@ -23,7 +23,7 @@ function MoviesCard({ movies, isSaved, savedMovies, movieDeleteFromSavedMovies, 
 
   function handleLikeCard(e) {
     if (isLike) {
-      const searchMovie = savedMovies.find((item) => item.movieId === String(movies.id));
+      const searchMovie = savedMovies.find((item) => item.movieId === movies.id);
       movieDeleteFromSavedMovies(searchMovie._id);
     }
     else {
