@@ -26,7 +26,7 @@ function App() {
   const [foundError, setFoundError] = React.useState(false);
   const [serverError, setServerError] = React.useState(false);
   const [profileError, setProfileError] = React.useState("");
-  const [currentUser, setCurrentUser] = React.useState({});
+  const [currentUser, setCurrentUser] = React.useState();
   const [isLoadingMovies, setIsLoadingMovies] = React.useState(false);
   const [token, setToken] = React.useState("");
   const history = useHistory();
