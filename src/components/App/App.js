@@ -191,6 +191,16 @@ function App() {
     if (savedMoviesCollection.length > 0) {
       setFilterSavedMoviesCollection(search(savedMoviesCollection, searchText));
     }
+    if (moviesCollection.length > 0) {
+      const result = search(moviesCollection, searchText);
+      if (result.length > 0) {
+        setFoundError(false);
+      }
+      else {
+        setFoundError(true);
+      }
+      setFilterSavedMoviesCollection(result);
+    }
     else {
       setIsLoadingMovies(true);
       MoviesApi.getSavedMovies()
@@ -305,8 +315,8 @@ function App() {
           setCurrentUser(newUser);
           setProfileError("Данные профиля успешно изменены");
         }
-        else if (newUser.message) {
-          setProfileError(newUser.message);
+        else if ("Данные профиля успешно изменены") {
+          setProfileError("Данные профиля успешно изменены");
         }
       }).catch((err) => setProfileError("Произошла ошибка при обновлении профиля"));
   }

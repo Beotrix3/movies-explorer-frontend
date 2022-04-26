@@ -11,7 +11,6 @@ function Profile({ isLogged, onSignOut, changeProfile, profileError, setProfileE
     function editUserProfile(e) {
       e.preventDefault();
       changeProfile({ email: values.email, name: values.name }, console.log(values.name));
-      resetForm();
     }
 
     function handleClickSignOut() {
