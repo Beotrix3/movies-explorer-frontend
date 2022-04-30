@@ -22,7 +22,7 @@ function SavedMovies({ isLogged, setFilter, isFilterMovies, moviesCollection, se
         <Header isLogged={isLogged} isMain={false} isProfile={false} isMovies={false} isSavedMovies={true} />
         <SearchForm isSaved={true} searchMovies={searchMovies} searchSavedMovies={searchSavedMovies} />
         <FilterCheckbox isFilterMovies={isFilterMovies} changeFilter={changeFilter} />
-        <MoviesCardList moviesCollection={moviesCollection} isSaved={true} isLoadingMovies={isLoadingMovies} savedMovies={savedMovies} movieDeleteFromSavedMovies={movieDeleteFromSavedMovies} movieSaveInStore={movieSaveInStore} foundError={false} serverError={serverError} />
+        <MoviesCardList moviesCollection={moviesCollection} isSaved={true} isLoadingMovies={isLoadingMovies} savedMovies={savedMovies} movieDeleteFromSavedMovies={movieDeleteFromSavedMovies} movieSaveInStore={movieSaveInStore} foundError={foundError} serverError={serverError} />
       </div>
       <Footer />
     </section>
