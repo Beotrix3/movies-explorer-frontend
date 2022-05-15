@@ -11,10 +11,12 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import * as MoviesApi from "../../utils/MoviesApi";
 import * as MainApi from "../../utils/MainApi";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { loadJSON } from "../../utils/functions";
 
 function App() {
   const [isLogged, setIsLogged] = React.useState(false);
   const [isFilterMovies, setIsFilterMovies] = React.useState(false);
+  const [isFilterSavedMovies, setIsFilterSavedMovies] = React.useState(false);
   const [moviesCollection, setMoviesCollection] = React.useState([]);
   const [savedMoviesCollection, setSavedMoviesCollection] = React.useState([]);
   const [filterMoviesCollection, setFilterMoviesCollection] = React.useState([]);
@@ -32,19 +34,17 @@ function App() {
   const history = useHistory();
   const pathname = useLocation();
 
-  function changeFilter() {
-    setIsFilterMovies(!isFilterMovies);
-  }
-
   function tokenCheck() {
     const jwt = localStorage.getItem('jwt');
     const movies = localStorage.getItem('movies');
     const savedMovies = localStorage.getItem('savedMovies');
+    //const checkbox = localStorage.getItem('checkbox');
     if (jwt) {
       setToken(jwt);
       if (movies) {
         const result = JSON.parse(movies);
         setMoviesCollection(result);
+        //setFilterMoviesCollection(result);
       }
       if (savedMovies) {
         const resultSave = JSON.parse(savedMovies);
@@ -67,6 +67,14 @@ function App() {
     tokenCheck();
   }, []);
 
+  function changeFilterMovies() {
+    setIsFilterMovies(!isFilterMovies);
+  }
+
+  function changeFilterSavedMovies() {
+    setIsFilterSavedMovies(!isFilterSavedMovies);
+  }
+ //
   function onRegister({ email, password, name }) {
     MoviesApi.register({ email, password, name })
       .then((data) => {
@@ -122,6 +130,7 @@ function App() {
     localStorage.removeItem('jwt');
     localStorage.removeItem('movies');
     localStorage.removeItem('savedMovies');
+    localStorage.removeItem('searchQueryYa'); //
     setIsLogged(false);
     setMoviesCollection([]);
     setSavedMoviesCollection([]);
@@ -190,9 +199,7 @@ function App() {
     setServerError(false);
     if (savedMoviesCollection.length > 0) {
       setFilterSavedMoviesCollection(search(savedMoviesCollection, searchText));
-    }
-    if (moviesCollection.length > 0) {
-      const result = search(moviesCollection, searchText);
+      const result = search(savedMoviesCollection, searchText); //
       if (result.length > 0) {
         setFoundError(false);
       }
@@ -200,6 +207,16 @@ function App() {
         setFoundError(true);
       }
       setFilterSavedMoviesCollection(result);
+      if (isFilterSavedMovies) { //
+        const resultTimeFilter = searchFilterTime(result);
+        if (resultTimeFilter.length > 0) {
+          setFoundError(false);
+        }
+        else {
+          setFoundError(true);
+        }
+        setFilterTimeMoviesCollection(resultTimeFilter);
+      }
     }
     else {
       setIsLoadingMovies(true);
@@ -251,18 +268,26 @@ function App() {
           setFilterTimeMoviesCollection(result);
         }
       }
-      else if (pathname.pathname === "/saved-movies") {
-        const result = searchFilterTime(filterSavedMoviesCollection);
-        if (result.length > 0) {
-          setFoundError(false);
-        }
-        else {
-          setFoundError(true);
-        }
-        setFilterTimeSavedMoviesCollection(result);
-      }
     }
   }, [isFilterMovies])
+
+  React.useEffect(() => {
+    setFoundError(false);
+    if (isFilterSavedMovies) {
+      if (pathname.pathname === "/saved-movies") {
+        if (savedMoviesCollection.length > 0) {
+          const result = searchFilterTime(filterSavedMoviesCollection);
+          if (result.length > 0) {
+            setFoundError(false);
+          }
+          else {
+            setFoundError(true);
+          }
+          setFilterTimeSavedMoviesCollection(result);
+        }
+      }
+    }
+  }, [isFilterSavedMovies]) //
 
   function movieDeleteFromSavedMovies(id) {
     setIsLoadingMovies(true);
@@ -290,6 +315,13 @@ function App() {
         localStorage.setItem('savedMovies', JSON.stringify(movies));
         setSavedMoviesCollection(prev => [...prev, res]);
         if (isFilterMovies) {
+          setFilterTimeMoviesCollection(prev => [...prev, res]);
+          setFilterMoviesCollection(prev => [...prev, res]);
+        } //
+        else {
+          setFilterSavedMoviesCollection(prev => [...prev, res]);
+        }
+        if (isFilterSavedMovies) {
           setFilterTimeSavedMoviesCollection(prev => [...prev, res]);
           setFilterSavedMoviesCollection(prev => [...prev, res]);
         }
@@ -342,7 +374,7 @@ function App() {
             <Movies
               isLogged={isLogged}
               isFilterMovies={isFilterMovies}
-              setFilter={changeFilter}
+              setFilter={changeFilterMovies} //
               moviesCollection={isFilterMovies ? filterTimeMoviesCollection : filterMoviesCollection}
               searchMovies={searchMovies}
               searchSavedMovies={searchSavedMovies}
@@ -359,9 +391,9 @@ function App() {
           <ProtectedRoute exact path="/saved-movies" isLogged={isLogged}>
             <SavedMovies
               isLogged={isLogged}
-              isFilterMovies={isFilterMovies}
-              setFilter={changeFilter}
-              moviesCollection={isFilterMovies ? filterTimeSavedMoviesCollection : filterSavedMoviesCollection}
+              isFilterSavedMovies={isFilterSavedMovies} //
+              setFilter={changeFilterSavedMovies}
+              moviesCollection={isFilterSavedMovies ? filterTimeSavedMoviesCollection : filterSavedMoviesCollection}
               searchMovies={searchMovies}
               searchSavedMovies={searchSavedMovies}
               isLoadingMovies={isLoadingMovies}

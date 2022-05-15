@@ -19,7 +19,7 @@ function Register({ onRegister, clearErrors, registerError, setRegisterError }) 
 
   function handleChangeInput(e) {
     handleChange(e);
-    if (registerError.length > 0) {
+    if (registerError.length) {
       setRegisterError("");
     }
   }
@@ -34,7 +34,7 @@ function Register({ onRegister, clearErrors, registerError, setRegisterError }) 
           <input className="register__input" type="text" name="name" value={values.name || ""} onChange={handleChangeInput} pattern="[а-яА-Яa-zA-ZёË\- ]{1,}" required minLength="2" />
           <span className="register__error">{errors.name}</span>
           <p className="register__text">E-mail</p>
-          <input className="register__input" type="email" name="email" value={values.email || ""} onChange={handleChangeInput} required />
+          <input className="register__input" pattern="^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$" type="email" name="email" value={values.email || ""} onChange={handleChangeInput} required />
           <span className="register__error">{errors.email}</span>
           <p className="register__text">Пароль</p>
           <input className="register__input" type="password" name="password" value={values.password || ""} onChange={handleChangeInput} required minLength="8" />

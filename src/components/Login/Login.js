@@ -31,7 +31,7 @@ function Login({ onLogin, clearErrors, loginError, setLoginError }) {
       <form className="login__form" onSubmit={handleLogin}>
         <fieldset className="login__fieldset">
           <p className="login__text">E-mail</p>
-          <input className="login__input" type="email" name="email" value={values.email || ""} onChange={handleChangeInput} required />
+          <input className="login__input" pattern="^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$" type="email" name="email" value={values.email || ""} onChange={handleChangeInput} required />
           <span className="login__error">{errors.email}</span>
           <p className="login__text">Пароль</p>
           <input className="login__input" type="password" name="password" value={values.password || ""} onChange={handleChangeInput} required minLength="8" />

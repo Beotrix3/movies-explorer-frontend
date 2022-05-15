@@ -1,9 +1,10 @@
 import React from "react";
 import "./SearchForm.css";
+import { loadJSON, saveJSON } from "../../utils/functions.js";
 
 function SearchForm({ isSaved, searchMovies, searchSavedMovies }) {
   const [validForm, setValidForm] = React.useState(true);
-  const [textInput, setTextInput] = React.useState("");
+  const [textInput, setTextInput] = React.useState(loadJSON('searchQueryYa') || '');
 
   function handleChangeInput(e) {
     setTextInput(e.target.value);
@@ -13,13 +14,12 @@ function SearchForm({ isSaved, searchMovies, searchSavedMovies }) {
   function handleSearchMovies(e) {
     e.preventDefault();
     searchMovies(textInput);
-    setTextInput("");
+    saveJSON("searchQueryYa", textInput);
   }
 
   function handleSearchSavedMovies(e) {
     e.preventDefault();
     searchSavedMovies(textInput);
-    setTextInput("");
   }
 
   return (
