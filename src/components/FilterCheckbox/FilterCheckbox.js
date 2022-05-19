@@ -1,9 +1,10 @@
 import React from "react";
 import "./FilterCheckbox.css";
 
-function FilterCheckbox({ isFilterMovies, changeFilterMovies }) {
+function FilterCheckbox({ isFilterMovies, changeFilter }) {
+
   function handleChangeFilter() {
-    changeFilterMovies();
+    changeFilter();
   }
 
   return (
