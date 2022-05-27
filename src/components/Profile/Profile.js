@@ -42,7 +42,7 @@ function Profile({ isLogged, onSignOut, changeProfile, profileError, setProfileE
             <span className="profile__error">{errors.name}</span>
             <div className="profile__field">
               <p className="profile__text">E-mail</p>
-              <input className="profile__input" name="email" value={values.email || ""} onChange={handleChangeInput} type="email" required />
+              <input className="profile__input" name="email" pattern="^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$" value={values.email || ""} onChange={handleChangeInput} type="email" required />
             </div>
             <span className="profile__error">{errors.email}</span>
           </div>

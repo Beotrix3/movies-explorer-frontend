@@ -4,7 +4,7 @@ import { loadJSON, saveJSON } from "../../utils/functions.js";
 
 function SearchForm({ isSaved, searchMovies, searchSavedMovies }) {
   const [validForm, setValidForm] = React.useState(true);
-  const [textInput, setTextInput] = React.useState(loadJSON('searchQueryYa') || '');
+  const [textInput, setTextInput] = React.useState(isSaved ? '' : loadJSON('searchQueryYa'));
 
   function handleChangeInput(e) {
     setTextInput(e.target.value);
@@ -25,7 +25,7 @@ function SearchForm({ isSaved, searchMovies, searchSavedMovies }) {
   return (
     <>
       <form className="search-form" onSubmit={isSaved ? handleSearchSavedMovies : handleSearchMovies}>
-        <input className="search-form__input" onChange={handleChangeInput} value={textInput} type="text" placeholder="Фильм" required minLength="2" />
+        <input className="search-form__input" onChange={handleChangeInput} value={textInput || ''} type="text" placeholder="Фильм" required minLength="2" />
         <div className="search-form__right">
           <button className="search-form__button" disabled={!validForm} type="submit"></button>
         </div>

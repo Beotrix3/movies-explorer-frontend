@@ -19,7 +19,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "npm run build && scp -r ./build/* explorer@51.250.0.63:/home/explorer/movies-explorer/frontend"
+    "deploy": "npm run build && scp -r ./build/* explorer@51.250.4.236:/home/explorer/movies-explorer/frontend"
   },
   "eslintConfig": {
     "extends": [
