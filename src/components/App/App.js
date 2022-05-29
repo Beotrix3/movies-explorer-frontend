@@ -322,9 +322,6 @@ function App() {
         if (isFilterMovies) {
           setFilterTimeMoviesCollection(prev => [...prev, res]);
           setFilterMoviesCollection(prev => [...prev, res]);
-        } //
-        else {
-          setFilterSavedMoviesCollection(prev => [...prev, res]);
         }
         if (isFilterSavedMovies) {
           setFilterTimeSavedMoviesCollection(prev => [...prev, res]);
