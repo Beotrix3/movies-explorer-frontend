@@ -1,17 +1,32 @@
-import "./SavedMovies.css"
+import React from "react";
+import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
+import Header from "../Header/Header";
 import SearchForm from "../SearchForm/SearchForm";
-// import Preloader from "../Preloader/Preloader";
+import Footer from "../Footer/Footer";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
+import "./SavedMovies.css";
 
+function SavedMovies({ isLogged, setFilter, isFilterMovies, moviesCollection, searchMovies, searchSavedMovies, isLoadingMovies, savedMovies, movieDeleteFromSavedMovies, movieSaveInStore, foundError, serverError, clearAllErrors }) {
 
-function SavedMovies () {
+  React.useEffect(() => {
+    clearAllErrors();
+  }, []);
+
+  function changeFilter() {
+    setFilter();
+  }
+
   return (
-    <main className="saved-movies">
-      <SearchForm />
-    {/* <Preloader /> */}
-      <MoviesCardList />
-    </main>
+    <section className="saved-movies">
+      <div className="saved-movies__content">
+        <Header isLogged={isLogged} isMain={false} isProfile={false} isMovies={false} isSavedMovies={true} />
+        <SearchForm isSaved={true} searchMovies={searchMovies} searchSavedMovies={searchSavedMovies} />
+        <FilterCheckbox isFilterMovies={isFilterMovies} changeFilter={changeFilter} />
+        <MoviesCardList moviesCollection={moviesCollection} isSaved={true} isLoadingMovies={isLoadingMovies} savedMovies={savedMovies} movieDeleteFromSavedMovies={movieDeleteFromSavedMovies} movieSaveInStore={movieSaveInStore} foundError={foundError} serverError={serverError} />
+      </div>
+      <Footer />
+    </section>
   )
-}
+};
 
-export default SavedMovies
+export default SavedMovies;

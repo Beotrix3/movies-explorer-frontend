@@ -1,27 +1,56 @@
+import React from "react";
+import { Link } from "react-router-dom";
 import "./Register.css";
-import Logo from "../Logo/Logo"
-import { Link } from "react-router-dom"
+import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 
-function Register() {
+function Register({ onRegister, clearErrors, registerError, setRegisterError }) {
+  const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
+
+  function handleRegister(e) {
+    e.preventDefault();
+    onRegister({ email: values.email, name: values.name, password: values.password });
+    resetForm();
+  }
+
+  function handleClearErrors() {
+    resetForm();
+    clearErrors();
+  }
+
+  function handleChangeInput(e) {
+    handleChange(e);
+    if (registerError.length) {
+      setRegisterError("");
+    }
+  }
+
   return (
     <section className="register">
-      <Logo />
-      <form className="register__form">
-        <h1 className="register__title">Добро пожаловать!</h1>
-        <label className="register__label" htmlFor="register-name">Имя</label>
-        <input className="register__input" id="register-name" name="register-name" type="text" minLength="2" required />
-        <label className="register__label" htmlFor="register-email">E-mail</label>
-        <input className="register__input" id="register-email" name="register-email" type="email" required />
-        <label className="register__label" htmlFor="register-password">Пароль</label>
-        <input className="register__input" id="register-password" name="register-password" type="password" minLength="8" required/>
-        <span className="register__error-text">Что-то пошло не так...</span>
-        <button className="register__button" type="submit">Зарегистрироваться</button>
-        <span className="register__text">Уже зарегистрированы?
-          <Link className="register__link" to="/signin">Войти</Link>
-        </span>
+      <Link to="/" className="register__logo"></Link>
+      <h1 className="register__title">Добро пожаловать!</h1>
+      <form className="register__form" onSubmit={handleRegister}>
+        <fieldset className="register__fieldset">
+          <p className="register__text">Имя</p>
+          <input className="register__input" type="text" name="name" value={values.name || ""} onChange={handleChangeInput} pattern="[а-яА-Яa-zA-ZёË\- ]{1,}" required minLength="2" />
+          <span className="register__error">{errors.name}</span>
+          <p className="register__text">E-mail</p>
+          <input className="register__input" pattern="^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$" type="email" name="email" value={values.email || ""} onChange={handleChangeInput} required />
+          <span className="register__error">{errors.email}</span>
+          <p className="register__text">Пароль</p>
+          <input className="register__input" type="password" name="password" value={values.password || ""} onChange={handleChangeInput} required minLength="8" />
+          <span className="register__error">{errors.password}</span>
+        </fieldset>
+        <div className="register__bottom">
+          <span className="register__error">{registerError}</span>
+          <button className={isValid ? "register__button" : "register__button register__button_invalid"} type="submit" disabled={!isValid}>Зарегистрироваться</button>
+          <div className="register__links">
+            <p className="register__answer">Уже зарегистрированы?</p>
+            <Link className="register__link" to="/signin" onClick={handleClearErrors}>Войти</Link>
+          </div>
+        </div>
       </form>
     </section>
-  );
-}
+  )
+};
 
 export default Register;

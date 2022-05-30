@@ -1,48 +1,46 @@
 .movies {
-  max-width: 1280px;
-  width: 100%;
-  margin: 0 auto;
-  box-sizing: border-box;
-  padding: 74px 70px 80px;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
-
 .movies__button {
-  box-sizing: border-box;
-  width: 100%;
+  margin-left: 70px;
+  margin-right: 70px;
+  margin-top: 50px;
+  margin-bottom: 80px;
   height: 36px;
-  background-color: #f9f9f9;
-  margin: 0 auto;
-  border: none;
-  cursor: pointer;
-  transition: 0.2s ease-in;
-  display: block;
-  font-weight: 500;
+  color: #000000;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 12px;
-  line-height: 1.2;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: 0px;
+  text-align: center;
+  border: none;
+  transition: 1s;
+  cursor: pointer;
+  border-radius: 6px;
+  background: #f9f9f9;
 }
-
+.movies__button_hide {
+  display: none;
+}
 .movies__button:hover {
-  opacity: 0.6;
+  opacity: 0.7;
 }
-
-@media screen and (max-width: 900px) {
-  .movies {
-    padding: 74px 30px 80px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .movies {
-    padding: 74px 10px 80px;
-  }
-}
-
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 768px) {
   .movies__button {
-    box-sizing: border-box;
-    width: 300px;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.2;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 50px;
+    margin-bottom: 80px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .movies__button {
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }

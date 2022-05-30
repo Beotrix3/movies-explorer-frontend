@@ -1,15 +1,14 @@
+import React from "react";
+import Header from "../Header/Header";
 import "./Promo.css";
-import { NavTab } from '../NavTab/NavTab';
 
-function Promo() {
+function Promo({ isLogged, isProfile, isMain, isMovies, isSavedMovies }) {
   return (
-    <section className="promo">
-      <div className="promo__inner">
-        <h1 className="promo__title">Учебный проект студента факультета Веб&#8209;разработки.</h1>
-      </div>
-      <NavTab />
+    <section className="promo-page">
+      <Header isLogged={isLogged} isMain={isMain} isMovies={isMovies} isSavedMovies={isSavedMovies} isProfile={isProfile} />
+      <h1 className="promo-page__title">Учебный проект студента факультета Веб-разработки.</h1>
     </section>
-  );
-}
+  )
+};
 
 export default Promo;
